@@ -1,12 +1,17 @@
 import React from 'react';
 import {
-    AppRegistry
+    AppRegistry,
+    View
 } from 'react-native';
 import Header from './src/components/header/header';
+import AlbumList from './src/components/album-list/album-list';
 
 // Create component
 const App = () => (
-    <Header headerText={'zMusic'} />
+    <View>
+        <Header headerText={'zMusic'} />
+        <AlbumList />
+    </View>
 );
 
 //Register component
