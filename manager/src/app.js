@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
+import LoginForm from './components/LoginForm';
 
 class Manager extends Component {
 
@@ -21,9 +23,10 @@ class Manager extends Component {
 
   render() {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
         <View>
           <Text>Manager</Text>
+          <LoginForm />
         </View>
       </Provider>
     )
