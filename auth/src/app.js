@@ -9,14 +9,14 @@ class App extends Component {
     }
     componentWillMount() {
         const config = {
-            apiKey: 'AIzaSyAvWjyYwVzYugNwrxI-4ewWgzELB4Ev5cU',
-            authDomain: 'auth-77879.firebaseapp.com',
-            databaseURL: 'https://auth-77879.firebaseio.com',
-            projectId: 'auth-77879',
-            storageBucket: 'auth-77879.appspot.com',
-            messagingSenderId: '860898441967'
+            apiKey: 'AIzaSyCbVnw-vNqU-j5G3EuwTmqo_HteS7aEAUs',
+            authDomain: 'manager-b2b30.firebaseapp.com',
+            databaseURL: 'https://manager-b2b30.firebaseio.com',
+            projectId: 'manager-b2b30',
+            storageBucket: '',
+            messagingSenderId: '1005238805172'
           };
-        firebase.initializeApp(config);
+          firebase.initializeApp(config);
 
         firebase.auth().onAuthStateChanged(
             (user) => {

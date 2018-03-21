@@ -1,7 +1,9 @@
 import {
   EMAIL_CHANGE,
   PASSWORD_CHANGE,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  LOGIN_USER_FAILED,
+  LOGIN_USER
 } from '../actions/types';
 import { Card } from '../components/common';
 
@@ -9,7 +11,7 @@ const INITIAL_STATE = {
   email: '',
   password: '',
   loading: false,
-  error: 'Authentication failed',
+  error: '',
   user: null
 };
 
@@ -23,7 +25,17 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, password: action.payload };
 
     case LOGIN_SUCCESS:
-      return { ...state, user: action.payload, loading: false };
+      return {
+        ...state,
+        ...INITIAL_STATE,
+        user: action.payload
+      };
+
+    case LOGIN_USER_FAILED:
+      return { ...state, error: 'Authentication failed', password: '', loading: false };
+
+    case LOGIN_USER:
+      return { ...state, error: '', loading: true };
     default:
       return state;
   }

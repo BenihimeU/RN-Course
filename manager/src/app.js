@@ -6,10 +6,12 @@ import reducers from './reducers';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import LoginForm from './components/LoginForm';
+import Router from './router';
+
 
 class Manager extends Component {
 
-  componentWillMount(){
+  componentWillMount() {
     const config = {
       apiKey: 'AIzaSyCbVnw-vNqU-j5G3EuwTmqo_HteS7aEAUs',
       authDomain: 'manager-b2b30.firebaseapp.com',
@@ -24,10 +26,7 @@ class Manager extends Component {
   render() {
     return (
       <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-        <View>
-          <Text>Manager</Text>
-          <LoginForm />
-        </View>
+        <Router />
       </Provider>
     )
   }
