@@ -1,55 +1,36 @@
 import React, { Component } from 'react';
-import { 
-  Text, 
-  TouchableWithoutFeedback, 
-  View, 
-  LayoutAnimation,
-  UIManager,
-  Platform
+import {
+  Text,
+  TouchableWithoutFeedback,
+  View
 } from 'react-native';
-import { connect } from 'react-redux';
 import { CardItem, Card } from '.';
-import * as actions from '../../actions';
+import { Actions } from 'react-native-router-flux';
 
 class ListItem extends Component {
 
   componentWillUpdate() {
-    if (Platform.OS === "android") {
-      UIManager.setLayoutAnimationEnabledExperimental &&
-        UIManager.setLayoutAnimationEnabledExperimental(true);
-        LayoutAnimation.easeInEaseOut();
-    }
   }
 
   rowSelected(id) {
-    this.props.selectLibrary(id);
-  }
-
-  renderDescription() {
-    const { isExpanded, library } = this.props;
-    if(isExpanded){
-      return (
-        <CardItem>
-          <Text>{library.description}</Text>
-        </CardItem>
-      );
-    }
+    Actions.employeeEdit({
+      employee: this.props.employee
+    });
   }
 
   render() {
     const { titleStyle } = styles;
-    const { id, title } = this.props.library;
+    const { uid, name } = this.props.employee;
 
     return (
-      <TouchableWithoutFeedback onPress={this.rowSelected.bind(this, id)}>
+      <TouchableWithoutFeedback onPress={this.rowSelected.bind(this, uid)}>
         <View>
           <CardItem>
             <Text
               style={titleStyle}>
-              {title}
+              {name}
             </Text>
           </CardItem>
-          { this.renderDescription()}
         </View>
       </TouchableWithoutFeedback>
     );
@@ -63,8 +44,4 @@ const styles = {
   }
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return { isExpanded: state.selectedLibraryId === ownProps.library.id }
-}
-
-export default connect(mapStateToProps, actions)(ListItem);
+export default ListItem;
