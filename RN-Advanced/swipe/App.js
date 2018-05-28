@@ -17,32 +17,39 @@ const DATA = [
 export default class App extends React.Component {
 
   renderCard(item) {
-    return(
+    return (
       <Card
         key={item.id}
         title={item.text}
         image={{ uri: item.uri }}
       >
-      <Text style={{ marginBottom: 10 }}>Customize later</Text>
-      <Button  
-        icon = {{ name: 'code' }}
-        backgroundColor ="#03A9F4"
-        title="View now"
-      />
+        <Text style={{ marginBottom: 10 }}>Customize later</Text>
+        <Button
+          icon={{ name: 'code' }}
+          backgroundColor="#03A9F4"
+          title="View now"
+        />
       </Card>
     )
   }
 
   renderNoMoreCard() {
-
+    return (
+      <Card title='All done!'>
+        <Text style={{ marginBottom: 10}}>
+        No more cards to swipe</Text>
+        <Button backgroundColor='#03F9A4'
+        title='Load more ...'/>
+      </Card>
+    );
   }
 
-  onSwipeLeft() {
-
+  onSwipeLeft(card) {
+    console.log(card);
   }
 
-  onSwipeRight() {
-
+  onSwipeRight(card) {
+    console.log(card);
   }
 
   render() {
