@@ -37,6 +37,7 @@ npm-debug.log
 yarn-error.log
 functions/node_modules/
 functions/serviceAccount.json
+functions/src/*.js
 
 # BUCK
 buck-out/
