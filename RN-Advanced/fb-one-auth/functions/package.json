@@ -11,8 +11,10 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@types/twilio": "0.0.9",
     "firebase-admin": "~5.12.1",
-    "firebase-functions": "^1.0.3"
+    "firebase-functions": "^1.0.3",
+    "twilio": "^3.17.1"
   },
   "devDependencies": {
     "tslint": "^5.8.0",
