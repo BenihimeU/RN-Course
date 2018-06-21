@@ -1,12 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import TabBarComponent from './routes/route';
+/* redux setup */
+import { Provider } from 'react-redux';
+import store from './redux/store';
+/* redux setup */
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      /* redux setup */
+      <Provider store={store}>
+        <TabBarComponent />
+      </Provider>
+      /* redux setup */
     );
   }
 }
