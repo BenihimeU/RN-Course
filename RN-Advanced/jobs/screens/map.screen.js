@@ -24,7 +24,9 @@ class MapScreen extends Component {
   }
 
   onSearchPress = () => {
-    this.props.fetchPostOffice(this.state.region);
+    this.props.fetchPostOffice(this.state.region, () => {
+      this.props.navigation.navigate('deck');
+    });
   }
 
   render() {
