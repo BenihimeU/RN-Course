@@ -1,7 +1,7 @@
 import axios from 'axios';
 import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
-import { FETCH_POST_OFFICE, LIKE_JOB } from './types';
+import { FETCH_POST_OFFICE, LIKE_OFFICE, CLEAR_FAVOURITES } from './types';
 
 const POST_API = 'http://postalpincode.in/api/pincode/';
 
@@ -23,6 +23,12 @@ export const fetchPostOffice = (region, callback) => {
 export const likeOffice = (office) => {
   return {
     payload: office,
-    type: LIKE_JOB
+    type: LIKE_OFFICE
+  }
+}
+
+export const clearFavourites = () => {
+  return {
+    type: CLEAR_FAVOURITES
   }
 }

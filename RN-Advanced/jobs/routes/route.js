@@ -26,7 +26,14 @@ const TabBarComponent = createBottomTabNavigator({
                     setting: SettingScreen
                 }, { headerMode: 'float' })
             }
-        }, {})
+        }, {
+                tabBarOptions: {
+                    labelStyle: {
+                        fontSize: 12
+                    }
+                }
+                , tabBarPosition: 'bottom'
+            })
     }
 }, TabNavigatorConfig);
 

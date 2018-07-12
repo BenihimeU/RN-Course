@@ -9,6 +9,9 @@ class ReviewScreen extends Component {
     const { navigate } = navigation;
     return {
       title: 'Review Jobs',
+      tabBarIcon: ({ tintColor }) => {
+        return <Icon name='favorite' size={30} color={tintColor} />;
+      },
       headerRight: (
         <Button
           title='Settings'
@@ -59,6 +62,8 @@ class ReviewScreen extends Component {
           <View style={{ height: 150 }}>
             <View style={styles.detailsContainerStyle}>
               <Text style={styles.italics}>{office.Name}</Text>
+            </View>
+            <View style={styles.detailsContainerStyle}>
               <Text style={styles.italics}>{office.BranchType}</Text>
             </View>
             <Icon

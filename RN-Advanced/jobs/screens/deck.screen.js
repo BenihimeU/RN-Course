@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { MapView } from 'expo';
 import * as actions from '../redux/actions';
 import Swipe from '../components/swipe';
 
 class DeckScreen extends Component {
-
+  static navigationOptions = {
+    title: 'Jobs',
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name='assignment' size={30} color={tintColor} />;
+    }
+  }
   renderDeck(post) {
     const defaultLatlng = {
       longitude: 77.59,
@@ -41,9 +46,16 @@ class DeckScreen extends Component {
     )
   }
 
-  renderNoMoreCards() {
+  renderNoMoreCards = () => {
     return (
       <Card title='No more results'>
+        <Button
+          title='Go back to map'
+          large
+          icon={{ name: 'my-location' }}
+          backgroundColor='#03A9F4'
+          onPress={() => { this.props.navigation.navigate('map') }}
+        />
       </Card>
     )
   }
@@ -54,7 +66,7 @@ class DeckScreen extends Component {
         <Swipe
           data={this.props.posts}
           renderCard={this.renderDeck}
-          renderNoMoreCards={this.renderNoMoreCards}
+          renderNoMoreCards={this.renderNoMoreCards.bind(this)}
           onSwipeRight={office => { this.props.likeOffice(office) }}
         />
       </View>
